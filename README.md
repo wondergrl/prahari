@@ -241,6 +241,78 @@ We chose a **web-first, mobile-responsive** platform over a native mobile app fo
 ```
 
 ---
+## 🛡️ Adversarial Defense & Anti-Spoofing Strategy
+
+### The Threat
+A coordinated syndicate of delivery workers using GPS-spoofing 
+apps to fake their location inside a disrupted micro-zone and 
+trigger false payouts while safely at home.
+
+### 1. How Prahari Differentiates Real vs Spoofed Location
+
+Simple GPS is dead. Prahari uses a multi-signal verification 
+stack — all signals must align for a claim to be approved:
+
+| Signal | What We Check | Spoofer Weakness |
+|---|---|---|
+| GPS coordinates | Worker inside disrupted cell | Easy to fake alone |
+| Accelerometer / motion data | Phone movement pattern matches active riding | Stationary phone = flagged |
+| Network cell tower triangulation | Cell towers confirm location independently of GPS | Cannot spoof towers |
+| Battery & charging state | Riders in rain rarely have phone charging | Spoofing rigs often plugged in |
+| App activity pattern | Delivery app must show active session during event | Fake GPS = no real orders |
+| Historical delivery heatmap | Worker's past 30 days of routes must include this zone | New actor in zone = flagged |
+
+**All 6 signals are cross-referenced.** A claim only passes 
+if at least 4 of 6 signals confirm genuine presence and activity 
+in the disrupted micro-zone.
+
+### 2. Detecting a Coordinated Fraud Ring
+
+A single spoofed claim is hard to catch. A ring of 500 is easy — 
+because they leave a pattern:
+
+- **Simultaneous claim spike:** If 20+ workers in the same 
+  micro-zone file claims within a 10-minute window, the system 
+  flags the entire batch for review — normal disruptions produce 
+  a gradual claim curve, not a vertical spike
+- **Social graph clustering:** Workers who registered within 
+  the same 48-hour window and share the same device fingerprint 
+  or IP address are grouped and monitored as a cluster
+- **Zone familiarity score:** Our AI checks if each claimant 
+  has historically delivered in this micro-zone over the past 
+  30 days — a worker who has never been to Zone H-47 before 
+  today is statistically suspicious
+- **Claim velocity per worker:** A worker filing claims on 
+  3+ consecutive disruption events gets an automatic secondary 
+  review — legitimate workers have natural gaps
+- **Cross-platform activity check:** If the worker's Zomato/
+  Swiggy app shows zero order attempts during the disruption 
+  window, income loss claim is invalid — you cannot claim lost 
+  income if you never tried to earn it
+
+### 3. UX Balance — Flagging Without Punishing Honest Workers
+
+A genuine worker in a flood zone may have a weak GPS signal, 
+low battery, or poor network — all of which could look 
+suspicious. Prahari handles this with a tiered response:
+
+| Confidence Score | Action | Worker Experience |
+|---|---|---|
+| High (4–6 signals pass) | Auto-approve, instant payout | Seamless, zero friction |
+| Medium (2–3 signals pass) | Soft flag — payout held 2 hours, auto-released if no anomaly | Worker sees "Verifying your claim" message |
+| Low (0–1 signals pass) | Hard flag — manual review within 4 hours | Worker gets notification with reason and appeal option |
+
+**The appeal process is simple:** Worker submits one piece of 
+evidence — a photo with geotag, a screenshot of their delivery 
+app showing active status, or a short 10-second video. 
+Honest workers in genuine disruptions will always have at 
+least one of these. Fraud rings operating at scale cannot 
+produce 500 unique, timestamped evidence pieces.
+
+**Key principle:** Prahari's system assumes innocence first. 
+A flagged claim is never auto-rejected — it is always 
+reviewable. Only confirmed fraud ring members are permanently 
+blacklisted.
 
 ## 🌟 Why Prahari Wins
 
