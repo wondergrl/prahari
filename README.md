@@ -268,7 +268,7 @@ We chose a **web-first, mobile-responsive** platform over a native mobile app fo
 
 ## 📎 Links
 
-- **GitHub Repository:** *(this repo)*
+- **GitHub Repository:** (https://github.com/wondergrl/prahari)
 - **Demo Video (Phase 1):** *[Add YouTube/Drive link here]*
 
 ---
