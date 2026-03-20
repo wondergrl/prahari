@@ -339,7 +339,7 @@ blacklisted.
 ---
 
 ## 📎 Links
-- Demo Video (Phase 1):* https://drive.google.com/file/d/1qSbqzsUGFvfSsaxnZKnTZeRLI7wWwmup/view
+- Demo Video (Phase 1): https://drive.google.com/file/d/1qSbqzsUGFvfSsaxnZKnTZeRLI7wWwmup/view
 ---
 
 
