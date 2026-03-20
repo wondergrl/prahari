@@ -341,7 +341,7 @@ blacklisted.
 ## 📎 Links
 
 - **GitHub Repository:** (https://github.com/wondergrl/prahari)
-- **Demo Video (Phase 1):** *[Add YouTube/Drive link here]*
+- **Demo Video (Phase 1):** *(https://drive.google.com/file/d/1qSbqzsUGFvfSsaxnZKnTZeRLI7wWwmup/view)*
 
 ---
 
