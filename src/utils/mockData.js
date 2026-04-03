@@ -1,0 +1,167 @@
+/**
+ * Mock data seeded with README personas
+ * Raju — primary persona from Prahari README
+ */
+
+export const MOCK_WORKER = {
+  id: 'WRK-RAJ001',
+  name: 'Raju Kumar',
+  phone: '+91 98765 43210',
+  aadhaar: '4521 8834 9012',
+  platform: 'Zomato',
+  city: 'Bengaluru',
+  zone: 'V-23',
+  zoneId: '8b1f8d1400aaaff',
+  vehicleType: 'Motorcycle',
+  yearsExp: '3',
+  tier: 'standard',
+  premium: 54,
+  coverageActive: true,
+  claimsFreeWeeks: 3,
+  trustScore: 94,
+};
+
+export const MOCK_ACTIVITY = [
+  { type: 'payout',  icon: '💰', msg: '₹800 paid — Heavy rain trigger fired in Zone V-23',   time: '2 hrs ago',  amount: 800  },
+  { type: 'policy',  icon: '🔄', msg: 'Weekly policy renewed automatically',                   time: '1 day ago',  amount: null },
+  { type: 'trigger', icon: '⚠️', msg: 'AQI 312 detected in your zone — monitoring active',     time: '2 days ago', amount: null },
+  { type: 'payout',  icon: '💰', msg: '₹600 paid — Extreme heat trigger (44°C) in Zone V-23', time: '5 days ago', amount: 600  },
+  { type: 'policy',  icon: '🔄', msg: 'Policy renewed — ₹54 debited via UPI',                  time: '8 days ago', amount: null },
+];
+
+export const MOCK_POLICIES = [
+  {
+    id: 'POL-2024-001',
+    tier: 'Standard',
+    premium: 54,
+    startDate: '2026-03-20',
+    endDate: '2026-03-27',
+    status: 'active',
+    zone: 'V-23, Velachery',
+    maxPayout: 800,
+    triggers: 5,
+    claimsThisWeek: 1,
+  },
+  {
+    id: 'POL-2024-000',
+    tier: 'Standard',
+    premium: 59,
+    startDate: '2026-03-13',
+    endDate: '2026-03-20',
+    status: 'expired',
+    zone: 'V-23, Velachery',
+    maxPayout: 800,
+    triggers: 5,
+    claimsThisWeek: 2,
+  },
+];
+
+export const MOCK_CLAIMS = [
+  {
+    id: 'CLM-20240321-001',
+    trigger: 'Heavy Rainfall',
+    triggerIcon: '🌧️',
+    zone: 'V-23, Velachery',
+    amount: 800,
+    status: 'paid',
+    confidence: 'High',
+    signals: 6,
+    timestamp: '2026-03-21 18:32',
+    payoutTime: '19:58 (86 min)',
+    upiRef: 'UPI2024321001XYZ',
+  },
+  {
+    id: 'CLM-20240316-002',
+    trigger: 'Extreme Heat',
+    triggerIcon: '🌡️',
+    zone: 'V-23, Velachery',
+    amount: 600,
+    status: 'paid',
+    confidence: 'High',
+    signals: 5,
+    timestamp: '2026-03-16 14:10',
+    payoutTime: '15:20 (70 min)',
+    upiRef: 'UPI2024316002ABC',
+  },
+  {
+    id: 'CLM-20240318-003',
+    trigger: 'AQI Alert',
+    triggerIcon: '🌫️',
+    zone: 'V-23, Velachery',
+    amount: 800,
+    status: 'reviewing',
+    confidence: 'Medium',
+    signals: 3,
+    timestamp: '2026-03-18 11:45',
+    payoutTime: 'Pending (soft flag)',
+    upiRef: null,
+  },
+];
+
+export const MOCK_TRIGGERS = [
+  {
+    id: 'TRG-RAIN',
+    name: 'Heavy Rainfall',
+    icon: '🌧️',
+    threshold: '> 50mm/hr',
+    source: 'OpenWeatherMap API',
+    current: '62mm/hr',
+    status: 'FIRED',
+    zone: 'V-23',
+    color: 'blue',
+    description: 'Rainfall exceeds safe riding threshold. Income loss trigger active.',
+  },
+  {
+    id: 'TRG-HEAT',
+    name: 'Extreme Heat',
+    icon: '🌡️',
+    threshold: '> 42°C for 2+ hrs',
+    source: 'OpenWeatherMap API',
+    current: '38°C',
+    status: 'MONITORING',
+    zone: 'V-23',
+    color: 'red',
+    description: 'Temperature below trigger threshold. Monitoring continues.',
+  },
+  {
+    id: 'TRG-AQI',
+    name: 'Severe AQI',
+    icon: '🌫️',
+    threshold: '> 300 AQI',
+    source: 'AQICN API',
+    current: '312 AQI',
+    status: 'FIRED',
+    zone: 'V-23',
+    color: 'purple',
+    description: 'Hazardous air quality detected. Claim verification in progress.',
+  },
+  {
+    id: 'TRG-FLOOD',
+    name: 'Flash Flood Alert',
+    icon: '🌊',
+    threshold: 'IMD district alert',
+    source: 'IMD RSS Feed',
+    current: 'No alert',
+    status: 'SAFE',
+    zone: 'V-23',
+    color: 'cyan',
+    description: 'No flood alerts for this district. Coverage standby.',
+  },
+  {
+    id: 'TRG-CURFEW',
+    name: 'Civic Disruption',
+    icon: '🚫',
+    threshold: 'Traffic anomaly + news match',
+    source: 'Mock Traffic + NewsAPI',
+    current: 'Normal',
+    status: 'SAFE',
+    zone: 'V-23',
+    color: 'amber',
+    description: 'No curfew or bandh detected in zone. Normal operations.',
+  },
+];
+
+export const CITIES = [
+  'Bengaluru','Mumbai','Chennai','Hyderabad','Delhi',
+  'Pune','Kozhikode','Kochi','Ahmedabad','Kolkata',
+];
