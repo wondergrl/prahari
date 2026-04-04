@@ -292,6 +292,19 @@ Real-time verification:
 MIT License - see [LICENSE](LICENSE) file for details
 
 ---
+## 👥 Contributors
+
+**Syntax Squad** — Team of 5 building for Guidewire DEVTrails 2026
+
+| Name | Role | Contribution |
+|------|------|--------------|
+| **Diya S Raj** (Team Lead) | Full-Stack & Product | Leadership, architecture design, registration & policy management flows, team coordination |
+| **Gowtham Sreekumar** | Frontend & UI | React components, dashboard design, dark mode implementation, Disruption Predictability Score feature |
+| **Midhila M** | AI/ML & Data | XGBoost model development, SHAP explainability, actuarial metrics, ML validation |
+| **Vaishnav S N** | Backend Logic & APIs | Premium calculation engine, fraud detection 6-signal stack, trigger automation, parametric logic |
+| **Amrita Raj** | Documentation & QA | README, technical documentation, testing workflows, IRDAI compliance checklist |
+
+---
 
 ## 🙏 Acknowledgments
 
