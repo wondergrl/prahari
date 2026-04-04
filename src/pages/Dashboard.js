@@ -246,18 +246,24 @@ export default function Dashboard({ navigate, dark, worker }) {
             </div>
           </div>
 
-          {/* 7-day risk forecast bar chart */}
-          <div className={`${cardC} p-6`}>
+          {/* 7-day disruption predictability */}
+          <div className={`${cardC} p-6 border ${dark ? 'border-cyan-500/15' : 'border-cyan-200'}`}
+            style={dark ? {boxShadow:'0 0 30px rgba(34,211,238,0.08)'} : {}}>
             <div className="flex items-center justify-between mb-5">
-              <h3 className="font-syne font-bold">7-Day Risk Forecast</h3>
-              <span className={`text-xs ${muted}`}>ML-generated from weather data</span>
+              <div>
+                <h3 className="font-syne font-bold">Disruption Predictability Score</h3>
+                <p className={`text-xs ${muted} mt-0.5`}>Plan your week around predicted disruptions</p>
+              </div>
             </div>
-            <div className="flex items-end gap-2 h-24">
+            
+            {/* Chart */}
+            <div className="flex items-end gap-2 h-24 mb-4">
               {RISK_FORECAST.map((d, i) => {
                 const color = d.risk > 0.6 ? 'bg-red-500' : d.risk > 0.45 ? 'bg-amber-500' : 'bg-green-500';
+                const isHighRisk = d.risk > 0.6;
                 return (
                   <div key={i} className="flex-1 flex flex-col items-center gap-1">
-                    <span className={`text-xs ${muted}`}>{(d.risk * 100).toFixed(0)}%</span>
+                    <span className={`text-xs font-semibold ${isHighRisk ? 'text-red-400' : ''}`}>{(d.risk * 100).toFixed(0)}%</span>
                     <div className={`w-full rounded-t-sm ${color} transition-all`}
                       style={{height: `${d.risk * 80}px`}} />
                     <span className={`text-xs font-medium ${dark ? 'text-gray-300' : 'text-gray-600'}`}>{d.day}</span>
@@ -265,10 +271,22 @@ export default function Dashboard({ navigate, dark, worker }) {
                 );
               })}
             </div>
-            <div className={`mt-3 flex items-center gap-4 text-xs ${muted}`}>
-              <span className="flex items-center gap-1"><div className="w-2 h-2 rounded-full bg-green-500" /> Low (&lt;45%)</span>
-              <span className="flex items-center gap-1"><div className="w-2 h-2 rounded-full bg-amber-500" /> Medium (45–60%)</span>
-              <span className="flex items-center gap-1"><div className="w-2 h-2 rounded-full bg-red-500" /> High (&gt;60%)</span>
+
+            {/* Insights */}
+            <div className={`rounded-lg p-3 mb-3 ${dark ? 'bg-cyan-500/8 border border-cyan-500/20' : 'bg-cyan-50 border border-cyan-200'}`}>
+              <div className="flex items-start gap-2">
+                <span className="text-sm">💡</span>
+                <div className="text-sm">
+                  <strong className="text-cyan-400">Smart Earning Plan:</strong> Wednesday has 72% disruption risk. Focus on Monday & Tuesday (31-48% risk) for guaranteed earning days.
+                </div>
+              </div>
+            </div>
+
+            {/* Legend */}
+            <div className={`flex items-center gap-3 text-xs ${muted}`}>
+              <span className="flex items-center gap-1"><div className="w-2 h-2 rounded-full bg-green-500" /> Safe (&lt;45%)</span>
+              <span className="flex items-center gap-1"><div className="w-2 h-2 rounded-full bg-amber-500" /> Caution (45–60%)</span>
+              <span className="flex items-center gap-1"><div className="w-2 h-2 rounded-full bg-red-500" /> High Risk (&gt;60%)</span>
             </div>
           </div>
 
