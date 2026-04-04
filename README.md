@@ -2,11 +2,13 @@
 
 > **प्रहरी** (Guardian in Sanskrit) - India's first hyperlocal parametric income insurance for food delivery workers
 
-[![Live Demo](https://img.shields.io/badge/demo-live-brightgreen)](http://localhost:3001)
-[![License](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
-[![Hackathon](https://img.shields.io/badge/Guidewire-DEVTrails%202026-orange)](https://guidewire.com)
-
 **Built by Syntax Squad for Guidewire DEVTrails 2026 Phase 2**
+
+---
+
+## 📹 Demo Video
+
+🎥 **[Watch 2-Minute Demo](YOUR_VIDEO_LINK_HERE)** ← Add your video link here after recording
 
 ---
 
