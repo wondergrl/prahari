@@ -1,178 +1,324 @@
-# Prahari — Hyperlocal Parametric Insurance for Food Delivery Workers
+# Prahari 🛡️
 
-**Prahari** (प्रहरी) = Guardian in Sanskrit. We protect the income of India's food delivery workers during disruptions.
+> **प्रहरी** (Guardian in Sanskrit) - India's first hyperlocal parametric income insurance for food delivery workers
 
-## The Problem
+[![Live Demo](https://img.shields.io/badge/demo-live-brightgreen)](http://localhost:3001)
+[![License](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
+[![Hackathon](https://img.shields.io/badge/Guidewire-DEVTrails%202026-orange)](https://guidewire.com)
 
-5 million delivery partners in India lose 20-30% of monthly income when bad weather hits. They can't work, they lose earnings, and they have **no safety net**. 
-
-Existing insurance? It treats the entire city as one zone. Raju works 5km away from a waterlogging hotspot, but because his "zone" flooded somewhere, he gets no payout. Another worker drowns in income loss but can't claim because they're 2km away from the weather station reading. 
-
-**It's broken.**
-
-## Our Solution
-
-We divide cities into **500m micro-zones** (H3 hexagonal cells). Each cell has its own flood risk score, drainage quality, terrain data. When heavy rain hits **Zone V-23 specifically**, workers in that zone get paid within 90 minutes. Workers elsewhere aren't affected.
-
-Plus: we use ML to calculate fair premiums. Raju's zone is safe from flooding → he pays less than someone in a flood-prone area. No guessing. No flat rates.
-
-## How It Works
-
-**Worker Journey:**
-1. Register (takes 2 minutes)
-2. AI calculates your weekly premium based on your zone & experience
-3. You get a policy with 5 parametric triggers
-4. When extreme weather hits **your zone**:
-   - System detects it (15-min polls from weather APIs)
-   - Validates you're in that zone via GPS
-   - Checks 6 fraud signals in parallel
-   - Pays you automatically
-5. Next week, renew (same process, premium might adjust based on weather forecast)
-
-**No forms. No claim processing. Just data → payout.**
-
-## What We Built
-
-### Registration (Multi-step onboarding)
-Workers sign up in 4 steps: personal info → work details → zone detection → review & activate. Saves their city, platform (Zomato/Swiggy), experience level, vehicle type, and preferred coverage tier.
-
-### AI Premium Calculator
-Uses XGBoost (gradient boosted trees) to calculate weekly premiums based on 10 factors:
-- Zone flood history (3 years)
-- Drainage quality  
-- Terrain elevation
-- Worker experience
-- 7-day weather forecast
-- Claims history (zone level)
-- Plus adjustments for loyalty
-
-**Example:** Raju gets ₹54/week instead of flat ₹59 because his zone is safer and he's experienced.
-
-### 5 Parametric Triggers (Automated)
-When these fire in a worker's zone, claims initiate automatically:
-- Heavy Rainfall (>50mm/hr)
-- Extreme Heat (>42°C)
-- Severe AQI (>300)
-- Flash Flood Alert (IMD warning)
-- Civic Disruption (traffic anomalies + news keywords)
-
-All pulled from real APIs (OpenWeatherMap, AQICN) every 15 minutes. Zone-specific, not city-wide.
-
-### 6-Signal Fraud Detection
-Before paying, we verify 6 independent signals:
-1. GPS confirms worker is in the disrupted zone
-2. Accelerometer shows they're actually riding (not at home spoofing location)
-3. Cell towers independently verify location
-4. Battery state is realistic (not fully charged like a spoofing rig)
-5. Delivery app shows active session during the disruption
-6. Worker has delivery history in this zone (not a stranger claiming false disruption)
-
-**Need 4+ signals to auto-approve.** It's simple: harder to coordinate fraud than to do honest work.
-
-### Zero-Touch Claims
-Disruption detected → GPS check → 6-signal fraud stack → Auto-approved. UPI payout within 90 minutes. Worker doesn't do anything except receive money.
-
-## Tech Stack
-
-- **Frontend:** React + Tailwind CSS (runs on http://localhost:3001)
-- **ML Engine:** JavaScript XGBoost simulation (gradient boosted trees with SHAP explainability)
-- **APIs:** OpenWeatherMap, AQICN (real); traffic/news (mocked)
-- **Deployment:** Ready for Vercel
-
-## Running It
-
-```bash
-npm install
-npm start
-# Goes to http://localhost:3001
-```
-
-Quick walkthrough:
-1. Click "Get Started"
-2. Register as a delivery worker
-3. Check Dashboard (see your AI-calculated premium and risk score)
-4. Go to Triggers (see all 5 armed and monitoring)
-5. Click "Simulate Fire" on any trigger to watch it activate
-6. Go to Claims → run the fraud detection simulation
-7. Watch all 6 signals light up green = auto-approved
-
-## The Math
-
-**Premiums** (Weekly)
-- Basic: ₹39 (₹500 max payout per day)
-- Standard: ₹59 (₹800 max payout per day)
-- Premium: ₹89 (₹1,100 max payout per day)
-
-Each adjusts based on AI risk score (zone safety, worker history, weather forecast).
-
-**Actuarial Health**
-- We pay out 41.9% of premiums as claims (healthy, < 60% target)
-- Combined ratio is 69.9% (profitable, below 100%)
-- Reserves exceed IRDAI 3-month mandate
-
-## Why Prahari Wins
-
-| | Prahari | Everyone Else |
-|---|---|---|
-| Granularity | 500m micro-zones | City-level |
-| Premium | AI-personalized | Flat or generic |
-| Triggers | 5 automated, zone-specific | Manual, city-wide |
-| Fraud Check | 6-signal stack | GPS only |
-| Payout | <90min, automatic | Days/weeks |
-
-## File Structure
-
-```
-src/
-├── pages/
-│   ├── Landing.js
-│   ├── Register.js (onboarding)
-│   ├── Dashboard.js (home page + AI model)
-│   ├── Premium.js (calculator)
-│   ├── Policy.js (active policy & renewal)
-│   ├── Claims.js (history + simulation)
-│   ├── Triggers.js (monitoring & fire simulation)
-│   ├── MLModel.js (model details, SHAP, actuarial metrics)
-│   ├── ZoneMap.js
-│   └── Exclusions.js
-├── components/
-│   └── Navbar.js
-├── utils/
-│   ├── mlEngine.js (XGBoost ensemble)
-│   ├── premiumEngine.js (dynamic pricing)
-│   ├── fraudEngine.js (6-signal detection)
-│   └── mockData.js (mock workers, claims, triggers)
-└── App.js
-```
-
-## Next Steps
-
-**Phase 3** (coming soon):
-- Advanced anomaly detection for fraud rings
-- Real Razorpay payment integration
-- Insurer dashboard with predictive analytics
-- Worker app with earnings protection forecasts
+**Built by Syntax Squad for Guidewire DEVTrails 2026 Phase 2**
 
 ---
 
-Built by **Syntax Squad** for **Guidewire DEVTrails 2026**
+## 📹 Demo Video
 
-### Analyzing the Bundle Size
+🎥 **[Watch 2-Minute Demo](YOUR_VIDEO_LINK_HERE)** ← Add your video link here after recording
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+---
 
-### Making a Progressive Web App
+## 🎯 The Problem
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+**5 million delivery workers in India lose 20-30% of monthly income when bad weather hits.**
 
-### Advanced Configuration
+Current insurance treats entire cities as one zone. A worker 5km away from flooding gets denied because their "zone" is fine. Another worker drowns in income loss but can't claim because they're 2km from the weather station reading.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+**It's broken. We're fixing it.**
 
-### Deployment
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## 💡 Our Solution
 
-### `npm run build` fails to minify
+We divide cities into **500m micro-zones** using H3 hexagonal cells. Each zone has its own:
+- Flood risk score
+- Drainage quality assessment  
+- Historical weather patterns
+- Real-time trigger monitoring
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+**When heavy rain hits Zone V-23 specifically**, only workers in that zone get paid within 90 minutes. No forms. No waiting. Just data → payout.
+
+Plus: **AI calculates fair premiums**. Safe zones pay less. High-risk zones pay more. No guessing, no flat rates.
+
+---
+
+## ⚡ Key Features
+
+### 1. **Disruption Predictability Score** ⭐ (Our Unique Feature)
+Workers see a 7-day forecast showing which days are safe for earning:
+- **Monday & Tuesday**: 31-48% risk (Safe earning days)  
+- **Wednesday**: 72% risk (High disruption - plan accordingly)
+- Helps workers optimize their schedules around predicted disruptions
+
+### 2. **AI-Powered Premium Calculation**
+XGBoost ensemble with 3 weak learners analyzes:
+- Zone flood history (3 years)
+- Drainage quality & terrain
+- Worker experience level
+- 7-day weather forecast
+- Zone-level claims history
+
+**Result:** Personalized weekly premiums (₹39-89) instead of flat rates.
+
+### 3. **5 Parametric Triggers** (Real-time monitoring)
+Auto-activates when these events occur in worker's zone:
+- 🌧️ **Heavy Rainfall** (>50mm/hr)
+- 🌡️ **Extreme Heat** (>42°C)  
+- 😷 **Severe AQI** (>300)
+- 🌊 **Flash Flood Alert** (IMD warnings)
+- 🚨 **Civic Disruption** (traffic + news analysis)
+
+Polled every 15 minutes from OpenWeatherMap & AQICN APIs.
+
+### 4. **6-Signal Fraud Detection**
+Before auto-payout, we verify:
+1. ✅ GPS confirms location in disrupted zone
+2. ✅ Accelerometer shows active riding (not spoofing at home)
+3. ✅ Cell towers independently verify location
+4. ✅ Battery state realistic (not fully charged like spoofing rig)
+5. ✅ Delivery app shows active session
+6. ✅ Worker has delivery history in this zone
+
+**Need 4+ signals green to auto-approve.** Fraud is harder than honest work.
+
+### 5. **Zero-Touch Claims**
+```
+Disruption detected → GPS check → 6-signal stack → Auto-approved → UPI payout
+```
+**90 minutes. No forms. No calls. Just money.**
+
+---
+
+## 🏗️ Architecture
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                      Frontend (React)                        │
+│  Landing │ Register │ Dashboard │ Premium │ Triggers │ Claims│
+└────────────────────────┬────────────────────────────────────┘
+                         │
+                         ▼
+┌─────────────────────────────────────────────────────────────┐
+│                    Core Engines (JS)                         │
+│  • mlEngine.js      → XGBoost premium calculation            │
+│  • fraudEngine.js   → 6-signal fraud detection               │
+│  • premiumEngine.js → Dynamic pricing with multipliers       │
+└────────────────────────┬────────────────────────────────────┘
+                         │
+                         ▼
+┌─────────────────────────────────────────────────────────────┐
+│                  External APIs                               │
+│  • OpenWeatherMap → Real-time weather & rainfall             │
+│  • AQICN          → Air quality index monitoring             │
+│  • IMD            → Flash flood alerts (mocked)              │
+│  • Traffic APIs   → Civic disruption detection (mocked)      │
+└─────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## 🚀 Quick Start
+
+### Prerequisites
+- Node.js v18+ (tested on v24.13.1)
+- npm or yarn
+
+### Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/wondergrl/prahari.git
+cd prahari
+
+# Install dependencies
+npm install
+
+# Start development server
+npm start
+```
+
+App runs on **http://localhost:3001**
+
+### Test Journey (2 minutes)
+
+1. **Register** → Click "Get Started" → Complete 4-step onboarding
+2. **Dashboard** → View your AI-calculated premium & Disruption Score
+3. **Triggers** → See 5 real-time monitors → Click "Simulate Fire"
+4. **Claims** → Run fraud detection simulation → Watch 6 signals verify
+5. **Premium Calculator** → Adjust coverage tier → See price breakdown
+
+---
+
+## 📊 The Math
+
+### Premium Tiers (Weekly)
+| Tier | Cost | Max Payout/Day | Best For |
+|------|------|----------------|----------|
+| Basic | ₹39 | ₹500 | Part-time workers |
+| Standard | ₹59 | ₹800 | Full-time workers |
+| Premium | ₹89 | ₹1,100 | High earners |
+
+**Each tier adjusts ±20% based on AI risk score.**
+
+### Actuarial Health
+- **Loss Ratio**: 41.9% (premiums paid out as claims)
+- **Combined Ratio**: 69.9% (profitable, <100%)
+- **Reserves**: 4.2 months (exceeds IRDAI 3-month mandate)
+
+---
+
+## 🎯 Why Prahari Wins
+
+| Feature | Prahari | Competitors |
+|---------|---------|-------------|
+| **Granularity** | 500m micro-zones (H3) | City-level |
+| **Premium** | AI-personalized per zone | Flat or generic |
+| **Triggers** | 5 automated, zone-specific | Manual, city-wide |
+| **Fraud Prevention** | 6-signal stack | GPS only |
+| **Payout Speed** | <90 minutes, automatic | Days/weeks, manual |
+| **Worker Insight** | Disruption Predictability Score | None |
+
+---
+
+## 🗂️ Project Structure
+
+```
+prahari/
+├── src/
+│   ├── pages/
+│   │   ├── Landing.js           # Hero page with features
+│   │   ├── Register.js          # 4-step worker onboarding
+│   │   ├── Dashboard.js         # Home with Disruption Score
+│   │   ├── Premium.js           # AI pricing calculator
+│   │   ├── Policy.js            # Active policy & renewal
+│   │   ├── Claims.js            # History + fraud simulation
+│   │   ├── Triggers.js          # 5 real-time monitors
+│   │   ├── MLModel.js           # XGBoost details & SHAP
+│   │   ├── ZoneMap.js           # H3 hexagonal visualization
+│   │   └── Exclusions.js        # Coverage terms
+│   ├── components/
+│   │   └── Navbar.js
+│   ├── utils/
+│   │   ├── mlEngine.js          # XGBoost ensemble (3 trees)
+│   │   ├── premiumEngine.js     # Dynamic pricing logic
+│   │   ├── fraudEngine.js       # 6-signal fraud detection
+│   │   └── mockData.js          # Sample workers/claims
+│   └── App.js                   # Main routing
+├── public/
+├── package.json
+└── README.md
+```
+
+---
+
+## 🛠️ Tech Stack
+
+**Frontend**
+- React 19 (Hooks + Context)
+- Tailwind CSS (Dark mode support)
+- Lucide React (Icons)
+- React Router v6
+
+**AI/ML**
+- XGBoost (JavaScript simulation with 3 weak learners)
+- SHAP values for explainability
+- Gradient boosted decision trees
+
+**APIs**
+- OpenWeatherMap (Real-time weather)
+- AQICN (Air quality monitoring)
+- IMD Flash Flood Alerts (Mocked for demo)
+- Traffic APIs (Mocked for demo)
+
+**Deployment Ready**
+- Vercel / Netlify compatible
+- Firebase Firestore schema designed
+- Razorpay test mode integrated
+
+---
+
+## 🎬 Features Walkthrough
+
+### Disruption Predictability Score
+![Disruption Score](https://via.placeholder.com/800x400?text=Add+Screenshot+Here)
+
+Shows workers a 7-day forecast with:
+- **Safe days** (green, <50% risk)
+- **Caution days** (yellow, 50-70% risk)  
+- **High risk days** (red, >70% risk)
+
+**Smart Earning Plan callout**: "Wednesday has 72% disruption risk. Focus on Monday & Tuesday (31-48% risk) for guaranteed earning days."
+
+### XGBoost Model Transparency
+![ML Model](https://via.placeholder.com/800x400?text=Add+Screenshot+Here)
+
+Dashboard shows:
+- 3 weak learner outputs
+- Final ensemble risk score (0-1)
+- Zone risk multiplier
+- Worker history multiplier
+- Feature importance via SHAP values
+
+### Fraud Detection in Action
+![Fraud Check](https://via.placeholder.com/800x400?text=Add+Screenshot+Here)
+
+Real-time verification:
+- GPS: ✅ Verified (in disrupted zone)
+- Accelerometer: ✅ Active riding pattern
+- Cell Tower: ✅ Independent location match
+- Battery: ✅ Realistic drain (68%)
+- App Activity: ✅ Delivery session active
+- Zone History: ✅ 47 past deliveries in zone
+
+**Confidence: HIGH → Auto-approved**
+
+---
+
+## 🚧 Roadmap (Phase 3)
+
+- [ ] Advanced anomaly detection for fraud rings
+- [ ] Real Razorpay payment integration
+- [ ] Insurer dashboard with predictive analytics
+- [ ] Worker mobile app (React Native)
+- [ ] Real-time earnings protection forecasts
+- [ ] Integration with Zomato/Swiggy APIs
+- [ ] SMS/WhatsApp trigger alerts
+
+---
+
+## 👥 Team: Syntax Squad
+
+**5 beginner developers building for Guidewire DEVTrails 2026**
+
+- Focus: Real-world problem solving over flashy tech
+- Approach: Worker-first design, not AI-first
+- Goal: Protect the income of India's delivery heroes
+
+---
+
+## 📄 License
+
+MIT License - see [LICENSE](LICENSE) file for details
+
+---
+
+## 🙏 Acknowledgments
+
+- **Uber H3** for hexagonal indexing system
+- **OpenWeatherMap** & **AQICN** for real-time data
+- **Guidewire** for organizing DEVTrails 2026
+- **India's 5M delivery workers** who inspired this project
+
+---
+
+## 📞 Contact
+
+- **GitHub**: [@wondergrl](https://github.com/wondergrl)
+- **Project**: [Prahari Repository](https://github.com/wondergrl/prahari)
+- **Hackathon**: Guidewire DEVTrails 2026 Phase 2
+
+---
+
+**⭐ If you find this project useful, please star the repository!**
+
+---
+
+*Built with ❤️ by Syntax Squad | Protecting delivery heroes, one zone at a time*
