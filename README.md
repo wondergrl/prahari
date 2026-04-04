@@ -239,7 +239,8 @@ Shows workers a 7-day forecast with:
 **Smart Earning Plan callout**: "Wednesday has 72% disruption risk. Focus on Monday & Tuesday (31-48% risk) for guaranteed earning days."
 
 ### XGBoost Model Transparency
-![ML Model](https://via.placeholder.com/800x400?text=Add+Screenshot+Here)
+<img width="1761" height="372" alt="image" src="https://github.com/user-attachments/assets/b93e1156-e3dd-4af0-8fc5-2d77e6de8d81" />
+
 
 Dashboard shows:
 - 3 weak learner outputs
@@ -249,7 +250,8 @@ Dashboard shows:
 - Feature importance via SHAP values
 
 ### Fraud Detection in Action
-![Fraud Check](https://via.placeholder.com/800x400?text=Add+Screenshot+Here)
+<img width="1919" height="859" alt="image" src="https://github.com/user-attachments/assets/c03c4a2e-348f-48ce-be1a-d8992cf8af83" />
+
 
 Real-time verification:
 - GPS: ✅ Verified (in disrupted zone)
