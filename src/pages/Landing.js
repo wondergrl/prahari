@@ -216,7 +216,7 @@ export default function Landing({ navigate, dark }) {
               <p>
                 Existing insurance ignores gig workers, or offers city-level coverage so broad it's
                 useless. <strong className="text-orange-400">Prahari is different</strong> — we insure at
-                the 500m hexagonal micro-zone, so Raju in Velachery isn't grouped with someone in
+                the 500m hexagonal micro-zone, so Ankith in Velachery isn't grouped with someone in
                 Guindy just because they're in "Chennai."
               </p>
             </div>
@@ -227,11 +227,11 @@ export default function Landing({ navigate, dark }) {
             style={dark ? {boxShadow:'0 0 50px rgba(249,115,22,0.05)'} : {}}>
             <div className="flex items-center gap-4 mb-6">
               <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-orange-500 to-amber-500 flex items-center justify-center text-white font-syne font-bold text-2xl">
-                R
+                A
               </div>
               <div>
-                <div className="font-syne font-bold text-lg">Raju Kumar</div>
-                <div className={`text-sm ${dark ? 'text-gray-400' : 'text-gray-500'}`}>Zomato Partner · Velachery, Chennai</div>
+                <div className="font-syne font-bold text-lg">Ankith</div>
+                <div className={`text-sm ${dark ? 'text-gray-400' : 'text-gray-500'}`}>Swiggy Partner · Bengaluru</div>
                 <div className="flex items-center gap-2 mt-1">
                   <span className="badge badge-green text-xs">Standard Tier</span>
                   <span className="badge badge-blue text-xs">Zone V-23</span>

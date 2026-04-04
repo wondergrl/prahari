@@ -19,8 +19,8 @@ export default function Premium({ navigate, dark, worker }) {
   const cardC = dark ? 'glass-card'    : 'light-card';
   const divid = dark ? 'border-white/5' : 'border-gray-100';
 
-  // Raju example from README
-  const rajuExample = calculatePremium({ tier:'standard', city:'Bengaluru', yearsExp:'3', claimsFreeWeeks:3 });
+  // Ankith example from README
+  const ankithExample = calculatePremium({ tier:'standard', city:'Bengaluru', yearsExp:'3', claimsFreeWeeks:3 });
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-8">
@@ -157,10 +157,10 @@ export default function Premium({ navigate, dark, worker }) {
           <div className={`${cardC} p-5`}>
             <div className="flex items-center gap-2 mb-3">
               <span className="text-lg">📖</span>
-              <h4 className="font-syne font-semibold text-sm">README Example — Raju</h4>
+              <h4 className="font-syne font-semibold text-sm">README Example — Ankith</h4>
             </div>
             <p className={`text-xs ${muted} mb-3 leading-relaxed`}>
-              Raju operates in Zone V-23 (medium risk, Bengaluru). Standard tier (₹59 base).
+              Ankith operates in Zone V-23 (medium risk, Bengaluru). Standard tier (₹59 base).
               Zone risk multiplier 1.05. No claims in 3 weeks (−₹8 loyalty).
             </p>
             <div className={`rounded-lg p-3 ${dark ? 'bg-white/4' : 'bg-gray-50'} text-sm font-syne font-bold flex items-center justify-between`}>
@@ -169,7 +169,7 @@ export default function Premium({ navigate, dark, worker }) {
             </div>
             <button onClick={() => setInputs({ tier:'standard', city:'Bengaluru', yearsExp:'3', claimsFreeWeeks:3, adverseWeather:false })}
               className={`mt-3 w-full flex items-center justify-center gap-2 text-xs ${muted} hover:text-orange-400 transition-colors`}>
-              <RefreshCw size={12} /> Load Raju's example
+              <RefreshCw size={12} /> Load Ankith's example
             </button>
           </div>
 

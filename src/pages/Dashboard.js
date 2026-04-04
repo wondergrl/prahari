@@ -24,7 +24,7 @@ const ZONE_SENSORS = [
 ];
 
 const ACTIVITY_FEED = [
-  { time: '2 mins ago',  type: 'payout',  text: 'Zone V-23 — ₹800 payout sent to Raju Kumar',     icon: DollarSign, color: 'green' },
+  { time: '2 mins ago',  type: 'payout',  text: 'Zone V-23 — ₹800 payout sent to Ankith',     icon: DollarSign, color: 'green' },
   { time: '14 mins ago', type: 'trigger', text: 'Trigger resolved: Rainfall dropped below 50mm',   icon: CloudRain,  color: 'blue'  },
   { time: '1 hr ago',    type: 'trigger', text: 'FIRE: Heavy rain >50mm confirmed in Zone V-23',   icon: AlertCircle,color: 'red'   },
   { time: '3 hrs ago',   type: 'policy',  text: 'Policy renewed automatically — Week 14 active',   icon: Shield,     color: 'orange'},
@@ -97,7 +97,7 @@ export default function Dashboard({ navigate, dark, worker }) {
   const muted  = dark ? 'text-gray-400' : 'text-gray-500';
   const cardC  = dark ? 'glass-card'    : 'light-card';
   const divid  = dark ? 'border-white/5': 'border-gray-100';
-  const w      = worker || { name:'Raju Kumar', city:'Chennai', tier:'standard', zone:'V-23' };
+  const w      = worker || { name:'Ankith', city:'Chennai', tier:'standard', zone:'V-23' };
 
   const riskColor = mlResult.riskScore > 0.6 ? 'red' : mlResult.riskScore > 0.4 ? 'amber' : 'green';
 

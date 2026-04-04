@@ -89,7 +89,7 @@ export default function Register({ navigate, dark, setWorker }) {
           {step === 0 && (
             <StepSection title="Personal Information" sub="Your basic details for the insurance policy." muted={muted}>
               <Field label="Full Name" muted={muted}>
-                <input className="input" placeholder="e.g. Raju Kumar"
+                <input className="input" placeholder="e.g. Ankith"
                   value={form.name} onChange={e => set('name', e.target.value)} />
               </Field>
               <Field label="Phone Number" muted={muted}>

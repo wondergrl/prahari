@@ -1,11 +1,11 @@
 /**
  * Mock data seeded with README personas
- * Raju — primary persona from Prahari README
+ * Ankith — primary persona from Prahari README
  */
 
 export const MOCK_WORKER = {
-  id: 'WRK-RAJ001',
-  name: 'Raju Kumar',
+  id: 'WRK-ANK001',
+  name: 'Ankith',
   phone: '+91 98765 43210',
   aadhaar: '4521 8834 9012',
   platform: 'Zomato',
