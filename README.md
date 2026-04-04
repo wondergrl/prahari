@@ -8,7 +8,7 @@
 
 ## 📹 Demo Video
 
-🎥 **[Watch 2-Minute Demo](YOUR_VIDEO_LINK_HERE)** ← Add your video link here after recording
+🎥 **[Watch 2-Minute Demo](YOUR_VIDEO_LINK_HERE)** 
 
 ---
 
