@@ -228,7 +228,8 @@ prahari/
 ## 🎬 Features Walkthrough
 
 ### Disruption Predictability Score
-![Disruption Score](https://via.placeholder.com/800x400?text=Add+Screenshot+Here)
+![Disruption Score](<img width="1101" height="423" alt="image" src="https://github.com/user-attachments/assets/280b2e4a-fb2a-46c5-af60-65e8b846df4b" />
+)
 
 Shows workers a 7-day forecast with:
 - **Safe days** (green, <50% risk)
