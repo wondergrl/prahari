@@ -6,12 +6,6 @@
 
 ---
 
-## 📹 Demo Video
-
-🎥 **[Watch 2-Minute Demo]((https://drive.google.com/file/d/1pP9ebkDHm4tLc8u_Hf6G1umdvVdMpBY2/view?usp=drive_link))** 
-
----
-
 ## 🎯 The Problem
 
 **5 million delivery workers in India lose 20-30% of monthly income when bad weather hits.**
